@@ -1,0 +1,4 @@
+Django==1.9.6
+django-lazysignup==1.0.2
+djangorestframework==3.3.3
+six==1.10.0
