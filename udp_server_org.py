@@ -15,6 +15,6 @@ UDPSock.bind(addr) # Bind the ip address and port number to the socket
 while True: 
     data,addr = UDPSock.recvfrom(buf) # Receive data from the socket - this call waits until some data is received
     print data
-    if data[0] == 'q':
-        break
+    #if data[0] == 'q':
+    #    break
     

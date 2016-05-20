@@ -18,11 +18,13 @@ class Votes(models.Model):
     DOWN = 'D'
     LEFT = 'L'
     RIGHT = 'R'
+    STOP = 'S'
     VOTE_CHOICES = (
         (UP, 'up'),
         (DOWN, 'down'),
         (LEFT, 'left'),
         (RIGHT,'right'),
+        (STOP, 'stop'),
     )
     robot = models.ForeignKey(Robot)
     vote_date = models.DateTimeField(auto_now=True)
