@@ -1,4 +1,10 @@
+amqp==1.4.9
+anyjson==0.3.3
+billiard==3.3.0.23
+celery==3.1.23
 Django==1.9.6
 django-lazysignup==1.0.2
 djangorestframework==3.3.3
+kombu==3.0.35
+pytz==2016.4
 six==1.10.0

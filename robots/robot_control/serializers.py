@@ -19,7 +19,7 @@ class CustomUserSerializer(serializers.HyperlinkedModelSerializer):
 class SessionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Session
-        fields = ('start', 'end', 'num_votes')
+        fields = ('id', 'start', 'end', 'num_votes')
 
 class RobotSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

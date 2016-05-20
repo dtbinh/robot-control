@@ -12,6 +12,8 @@ from serializers import *
 
 @allow_lazy_user
 def index(request):
+    Sessions.objects.all().last()
+
     return HttpResponse(request.user.username)
 
 @api_view(['GET','POST'])

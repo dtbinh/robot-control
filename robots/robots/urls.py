@@ -17,12 +17,14 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from robot_control import views
 from rest_framework import routers
+from django.views.generic.base import TemplateView
 
 router = routers.DefaultRouter()
 router.register(r'users', views.CustomUserViewSet)
 
 
 urlpatterns = [
+    url(r'^$', TemplateView.as_view(template_name='index.html'), name='home'),
     url(r'^', include(router.urls)),
     url(r'^', include('robot_control.urls')),
     url(r'^admin/', admin.site.urls),
