@@ -19,7 +19,7 @@ def create_session():
     data =r.json()
     session_id = data['id']
     time.sleep(3)
-    r=requests.put('http://locahost:8000/sessions/'+str(session_id)+'/', data={'num_votes':1})
+    r=requests.put('http://localhost:8000/sessions/'+str(session_id)+'/', data={'num_votes':1})
     return r.json()
 
 if __name__ == "__main__":

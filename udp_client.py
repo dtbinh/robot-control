@@ -12,9 +12,14 @@ UDPSock = socket(AF_INET,SOCK_DGRAM) # Open a UDP socket
 
 
 while True: # This is where you repeatedly collect data from the user and send it to the server
-    r=requests.get("http://localhost:8000/votes/1")
-    data = str(r.json()) # Get your data
+    s=requests.post('http://localhost:8000/sessions/', data={'num_votes':0})
+    data =s.json()
+    session_id = data['id']
+    time.sleep(5)
+    r=requests.get("http://localhost:8000/votes/"+str(session_id))
+    votes=r.json()
+    s=requests.put('http://localhost:8000/sessions/'+str(session_id)+'/', data={'num_votes':len(votes)})
+    data = str(votes) # Get your data
     UDPSock.sendto(data,addr) # Set the data to the server
     if data[0] == 'q': # If the data starts with 'q', we are done
         break
-    time.sleep(3)
