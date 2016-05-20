@@ -34,7 +34,7 @@ def input():
 
 prev_id=0
 while True:
-  r = bypass.get('http://localhost:8000/sessions/0/')
+  r = bypass.get('http://192.168.1.6:8000/sessions/0/')
   data=r.json()
   session_id=data['id']
   if session_id == prev_id:
@@ -45,4 +45,4 @@ while True:
   v = input()
   signal.alarm(0)
   if v is not '':
-      cast_vote = bypass.post('http://localhost:8000/votes/', data={"robot":1, "session":session_id,"vote":OPTIONS[v.lower()], "username":1})
+      cast_vote = bypass.post('http://192.168.1.6:8000/votes/', data={"robot":1, "session":session_id,"vote":OPTIONS[v.lower()], "username":1})
