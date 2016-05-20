@@ -14,14 +14,14 @@ UDPSock = socket(AF_INET,SOCK_DGRAM) # Open a UDP socket
 
 
 while True: # This is where you repeatedly collect data from the user and send it to the server
-    s=bypass.post('http://127.0.0.1:8000/sessions/', data={'num_votes':0})
+    s=bypass.post('http://192.168.1.6:8000/sessions/', data={'num_votes':0})
     print s.status_code
     data =s.json()
     session_id = data['id']
     time.sleep(5)
-    r=bypass.get("http://localhost:8000/votes/"+str(session_id))
+    r=bypass.get("http://192.168.1.6:8000/votes/"+str(session_id))
     votes=r.json()
-    s=bypass.put('http://localhost:8000/sessions/'+str(session_id)+'/', data={'num_votes':len(votes)})
+    s=bypass.put('http://192.168.1.6:8000/sessions/'+str(session_id)+'/', data={'num_votes':len(votes)})
     data = votes # Get your data
     string_data=''
     for vote in votes:
