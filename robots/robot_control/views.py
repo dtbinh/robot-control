@@ -13,7 +13,6 @@ from serializers import *
 @allow_lazy_user
 def index(request):
     Sessions.objects.all().last()
-
     return HttpResponse(request.user.username)
 
 @api_view(['GET','POST'])
@@ -57,13 +56,22 @@ class SessionDetail(APIView):
             return Session.objects.get(pk=pk)
         except Session.DoesNotExist:
             raise Http404
+
     def get(self, request, pk, format=None):
-        session = self.get_object(pk)
+        session=self.get_object(1)
+        if pk=='0':
+            session = Session.objects.all().last()
+        else:
+            session = self.get_object(pk)
         serializer = SessionSerializer(session)
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        session = self.get_object(pk)
+        session=self.get_object(1)
+        if pk=='0':
+            session = Session.objects.all().last()
+        else:
+            session = self.get_object(pk)
         serializer = SessionSerializer(session, data=request.data)
         if serializer.is_valid():
             serializer.save()
